@@ -12,7 +12,7 @@
 ## 2. webpack基本使用
     1). 下载依赖包
         yarn add -D webpack webpack-cli
-        yarn add -D html-webpack-plugin
+        yarn add -D html-webpack-plugin   自动引入打包好的js
 
     2). 创建webpack配置: webpack.config.js
         const path = require('path')
@@ -215,3 +215,13 @@
 ## 9. 解决history模式路由请求404的问题
     devServer: historyApiFallback: true, // 任意的 404 响应都被替代为 index.html
     output: publicPath: '/', // 引入打包的文件时路径以/开头
+
+## 10. 区分使用开发环境与生产环境
+     生产环境:
+         npm run build  ==> webpack
+         1). 在内存进行编译打包,生成内存中的打包文件
+         2). 保存到本地(在本地生成打包文件)  此时不能通过浏览器来访问,需要启动服务器运行
+     开发环境:
+         npm run dev  ==> webpack-dev-server
+         1). 在内存进行编译打包,生成内存中的打包文件
+         2) 直接调动服务器,运行内存中的打包文件   可以通过浏览器虚拟路径访问       

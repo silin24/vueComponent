@@ -1,15 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
-
-import "./base.css";
-
 new Vue({
-  beforeCreate() {
-    //创建一个全局的用于绑定事件监听和分发事件的对象:$globalEventBus
-    // 全局事件总线对象就是一个vm,将其挂载到Vue的原型对象上,
-    //所有组件对象的原型对象就是一个vm对象  ==>Vue原型对象是组件对象的原型链上的对象
-    Vue.prototype.$globalEventBus = this;
-  },
   // el:"#root"
   // render: (h) => h(App),
   components: {

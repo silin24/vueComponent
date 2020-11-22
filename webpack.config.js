@@ -1,5 +1,6 @@
 // __dirname:代表当前文件夹所在目录的绝对路径  C:\Users\y\Desktop\vueComponent2
 const HtmlWeboackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const path = require("path");
 // import  from 'http-'
 
@@ -30,6 +31,12 @@ module.exports = {
           },
         },
       },
+      //处理vue
+      {
+        test: /\.vue$/,
+        include: path.resolve(__dirname, "src"),
+        loader: "vue-loader",
+      },
       // 处理css
       {
         test: /\.css$/,
@@ -52,6 +59,7 @@ module.exports = {
       template: "index.html", //以那个页面作为模板页面处理(根目录找)
       filename: "index.html",
     }),
+    new VueLoaderPlugin(),
   ],
 
   // 开发服务器
@@ -61,4 +69,13 @@ module.exports = {
   },
   // 配置开启source-map调试
   devtool: "cheap-module-eval-source-map",
+
+  // 引入模块的解析
+  resolve: {
+    extensions: [".js", ".vue", ".json"], // 可以省略的后缀名
+    alias: {
+      // 路径别名(简写方式)
+      vue$: "vue/dist/vue.esm.js", // 表示精准匹配
+    },
+  },
 };
