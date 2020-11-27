@@ -16,7 +16,8 @@
 import Header from "./components/Header";
 import List from "./components/List";
 import Footer from "./components/Footer";
-import { saveTodos, readTodos } from "./utils/storageUtils";
+import haha from "./utils/storageUtils";
+// import {saveTodos readTodos} from "./utils/storageUtils";
 export default {
   data() {
     return {
@@ -32,7 +33,8 @@ export default {
     // 模拟异步读取数据
     setTimeout(() => {
       // 读取local中保存的todos, 更新数据
-      this.todos = readTodos();
+      //this.todos = readTodos()
+      this.todos = haha.readTodos();
     }, 1000);
   },
   watch: {
@@ -41,7 +43,8 @@ export default {
       // handler: function (value) {
       //   localStorage.setItem("todos_key", JSON.stringify(value));
       // },
-      handler: saveTodos,
+      // handler: saveTodos,
+      handler: haha.saveTodos,
     },
   },
   methods: {

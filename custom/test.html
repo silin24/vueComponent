@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./globalEventBus.js"></script>
+    <script>
+      /* 
+    globalEventBus:
+      1). on(eventName, listener): 绑定事件监听
+      2). emit(eventName, data): 分发事件
+      3). off(eventName): 移除事件监听
+    */
+
+      globalEventBus.on("add", (data) => {
+        console.log("add1()", data);
+      });
+      globalEventBus.on("add", (data) => {
+        console.log("add2()", data);
+      });
+      globalEventBus.on("delete", (data) => {
+        console.log("delete()", data);
+      });
+
+      // globalEventBus.off()
+      globalEventBus.off("add");
+
+      globalEventBus.emit("add", "atguigu");
+      globalEventBus.emit("delete", "baidu");
+    </script>
+  </body>
+</html>

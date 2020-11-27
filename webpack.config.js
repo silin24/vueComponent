@@ -27,7 +27,24 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  useBuiltIns: "usage",
+                  corejs: 2, // 处理一些新语法的实现
+                },
+              ],
+            ],
+            plugins: [
+              [
+                "component",
+                {
+                  libraryName: "mint-ui",
+                  style: true,
+                },
+              ],
+            ],
           },
         },
       },
@@ -66,6 +83,13 @@ module.exports = {
   devServer: {
     open: true, // 自动打开浏览器
     quiet: true, // 不做太多日志输出
+    proxy: {
+      "/api": {
+        target: "http://localhost:4000",
+        pathRewrite: { "^/api": "" },
+      },
+      changeOrigin: true, // 支持跨域
+    },
   },
   // 配置开启source-map调试
   devtool: "cheap-module-eval-source-map",
@@ -76,6 +100,7 @@ module.exports = {
     alias: {
       // 路径别名(简写方式)
       vue$: "vue/dist/vue.esm.js", // 表示精准匹配
+      "@": path.resolve(__dirname, "src"),
     },
   },
 };

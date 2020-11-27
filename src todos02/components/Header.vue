@@ -19,6 +19,7 @@ export default {
 
   methods: {
     add() {
+      console.log(this);
       //根据输入的title封装一个todo对象
       const title = this.title.trim();
       if (!title) return;
