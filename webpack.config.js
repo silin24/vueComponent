@@ -15,6 +15,7 @@ module.exports = {
   output: {
     filename: "static/js/[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: '/' // 引入的打包文件的左侧以 / 开头
   },
   // 模块加载器
   module: {
@@ -90,10 +91,10 @@ module.exports = {
       },
       changeOrigin: true, // 支持跨域
     },
+    historyApiFallback: true  // 任意404的响应都会被替代为index.html
   },
   // 配置开启source-map调试
   devtool: "cheap-module-eval-source-map",
-
   // 引入模块的解析
   resolve: {
     extensions: [".js", ".vue", ".json"], // 可以省略的后缀名

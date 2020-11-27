@@ -12,6 +12,7 @@ import MessageDetail from "../pages/MessageDetail";
 Vue.use(VueRouter);
 
 export default new VueRouter({
+  mode: 'history',
   // 应用中所有路由
   routes: [
     // 注册路由
